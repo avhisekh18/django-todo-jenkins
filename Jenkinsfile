@@ -1,19 +1,30 @@
 pipeline {
     agent any
+
+    environment {
+        IMAGE_NAME = "myapp:latest"
+    }
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building...'
+                git 'https://github.com/yourusername/yourapp.git'
             }
         }
-        stage('Test') {
+
+        stage('Build Docker Image') {
             steps {
-                echo 'Running tests...'
+                bat "docker build -t %IMAGE_NAME% ."
             }
         }
-        stage('Deploy') {
+
+        stage('Run Docker Container') {
             steps {
-                echo 'Deploying...'
+                bat """
+                docker stop myapp || echo 'No container running'
+                docker rm myapp || echo 'No container to remove'
+                docker run -d --name myapp -p 8000:8000 %IMAGE_NAME%
+                """
             }
         }
     }
