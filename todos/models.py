@@ -15,3 +15,6 @@ class Travel(models.Model):
 
     def __str__(self):
         return self.destination
+    
+class Book(models.Model):
+    Author_name = models.CharField(max_length=30)
