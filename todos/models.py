@@ -8,3 +8,10 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.title
+
+class Travel(models.Model):
+    destination = models.CharField(max_length=50)
+    
+
+    def __str__(self):
+        return self.destination
