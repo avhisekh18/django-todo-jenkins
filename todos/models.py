@@ -18,6 +18,3 @@ class Travel(models.Model):
     
 class Book(models.Model):
     Author_name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.Author_name
