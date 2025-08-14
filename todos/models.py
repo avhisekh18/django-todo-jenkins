@@ -10,5 +10,7 @@ class Todo(models.Model):
         return self.title
 
 class Book(models.Model):
-    Author_name = models.CharField(max_length=50
-                                   )
+    Author_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return super().__str__()
