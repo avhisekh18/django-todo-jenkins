@@ -9,8 +9,3 @@ class Todo(models.Model):
     def __str__(self):
         return self.title
 
-class Book(models.Model):
-    Author_name = models.CharField(max_length=60)
-
-    def __str__(self):
-        return super().__str__()
