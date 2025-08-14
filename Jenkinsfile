@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t django-todo-jenkins:latesr ."
+                bat "docker build -t django-todo-jenkins:latest ."
             }
         }
 
