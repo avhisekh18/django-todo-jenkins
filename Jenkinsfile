@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Build Docker Image'){
             steps {
-                bat 'docker run -d -p 8002:8000 myapp:%BUILD_NUMBER%'
+                bat 'docker run -d -p 8002:8000 django-todo-jenkins:%BUILD_NUMBER%'
             }
         }
     }
