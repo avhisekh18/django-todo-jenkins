@@ -16,10 +16,17 @@ pipeline {
                 echo 'Deploying...'
             }
         }
-        stage('Build Docker Image'){
+        stage('Build Docker Image') {
             steps {
-                bat 'docker run -d -p 8002:8000 django-todo-jenkins:%BUILD_NUMBER%'
+                bat "docker build -t django-todo-jenkins:${env.BUILD_NUMBER} ."
             }
         }
+
+        stage('Run Docker Container') {
+            steps {
+                bat "docker run -d -p 8002:8000 django-todo-jenkins:${env.BUILD_NUMBER}"
+            }
+        }
+
     }
 }
