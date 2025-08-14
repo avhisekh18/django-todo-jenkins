@@ -15,7 +15,6 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 bat "call venv/scripts/activate && python manage.py test"
-                bat "call venv/scripts/activate && pytest --cov=."
                 
                 
             }
