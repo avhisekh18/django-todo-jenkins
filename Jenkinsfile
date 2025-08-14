@@ -24,7 +24,7 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                bat "docker run -d -p 8002:8000 django-todo-jenkins:${env.BUILD_NUMBER}"
+                bat "docker run -d -p 8003:8000 django-todo-jenkins:${env.BUILD_NUMBER}"
             }
         }
 
