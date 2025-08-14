@@ -18,13 +18,17 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t django-todo-jenkins:${env.BUILD_NUMBER} ."
+                scripts{  
+                    bat "docker build -t django-todo-jenkins:latesr ."
+                }
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat "docker run -d -p 8003:8000 django-todo-jenkins:${env.BUILD_NUMBER}"
+                script{
+                    bat "docker run -d -p 8003:8000 django-todo-jenkins:latest"
+                }
             }
         }
 
