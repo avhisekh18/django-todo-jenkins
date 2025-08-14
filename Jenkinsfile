@@ -4,11 +4,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
+                bat "pip install -r requirements.txt"
             }
         }
         stage('Test') {
             steps {
                 echo 'Running tests...'
+                bat "pytest"
             }
         }
         stage('Deploy') {
@@ -24,7 +26,11 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                bat "docker run -d -p 8003:8000 django-todo-jenkins:latest"
+                bat """
+                   docker stop django-todo-container || exit 0
+                   docker rm django-todo-container || exit 0
+                   docker run -d -p 8003:8000 --name django-todo-container django-todo-jenkins:latest 
+                """
             }
         }
 
