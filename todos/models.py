@@ -9,16 +9,6 @@ class Todo(models.Model):
     def __str__(self):
         return self.title
 
-class Travel(models.Model):
-    destination = models.CharField(max_length=50)
-    
-
-    def __str__(self):
-        return self.destination
-    
 class Book(models.Model):
-    Author_name = models.CharField(max_length=30)
-    
-
-    def __str__(self):
-        return self.Author_name
+    Author_name = models.CharField(max_length=50
+                                   )
