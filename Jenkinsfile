@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                bat "call venv/scripts/activate && python manage.py pytest"
+                bat "call venv/scripts/activate && python manage.py test"
                 
                 
             }
