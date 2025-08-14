@@ -10,6 +10,10 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
+                bat "python -m venv venv"
+                bat "call venv/scripts/activate && pip install -r requirements.txt"
+                bat "call venv/scripts/activate && python manage.py migrate"
+                bat "call venv/scripts/activate && python manage.py collectstatic --noinput"
                 
             }
         }
